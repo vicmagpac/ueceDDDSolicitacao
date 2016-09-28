@@ -1,6 +1,6 @@
-package Status;
+package status;
 
-public class AguardandoRH implements Status {
+public class NovaSolicitacao implements Status {
 
 	@Override
 	public void solicitar() {
@@ -21,7 +21,7 @@ public class AguardandoRH implements Status {
 	}
 
 	@Override
-	public void retornar() {
+	public void retornar(String observacao) {
 		// TODO Auto-generated method stub
 		
 	}

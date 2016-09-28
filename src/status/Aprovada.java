@@ -1,4 +1,4 @@
-package Status;
+package status;
 
 public class Aprovada implements Status {
 
@@ -21,7 +21,7 @@ public class Aprovada implements Status {
 	}
 
 	@Override
-	public void retornar() {
+	public void retornar(String observacao) {
 		// TODO Auto-generated method stub
 		
 	}
