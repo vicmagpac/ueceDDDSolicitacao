@@ -1,8 +1,18 @@
 package status;
 
-public interface Status {
-	public void solicitar();
-	public void aprovar();
-	public void recusar();
-	public void retornar(String observacao);
+import modelo.Solicitacao;
+
+public abstract class Status {
+	
+	protected Solicitacao solicitacao;
+	
+	public Status setSolicitacao(Solicitacao solicitacao) {
+		this.solicitacao = solicitacao;
+		return this.solicitacao.getStatus();
+	}
+	
+	public abstract void solicitar();
+	public abstract void aprovar();
+	public abstract void recusar();
+	public abstract void retornar(String observacao);
 }

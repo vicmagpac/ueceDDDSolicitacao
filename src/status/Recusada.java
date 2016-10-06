@@ -1,28 +1,28 @@
 package status;
 
-public class Recusada implements Status {
+public class Recusada extends Status {
 
 	@Override
 	public void solicitar() {
-		// TODO Auto-generated method stub
+		throw new IllegalStateException("Não é possível solicitar, solicitação já recusada!");
 		
 	}
 
 	@Override
 	public void aprovar() {
-		// TODO Auto-generated method stub
+		throw new IllegalStateException("Não é possível aprovar, solicitação já recusada!");
 		
 	}
 
 	@Override
 	public void recusar() {
-		// TODO Auto-generated method stub
+		throw new IllegalStateException("Não é possível recusada, solicitação já recusada!");
 		
 	}
 
 	@Override
 	public void retornar(String observacao) {
-		// TODO Auto-generated method stub
+		throw new IllegalStateException("Não é possível retornar, solicitação já recusada!");
 		
 	}
 	

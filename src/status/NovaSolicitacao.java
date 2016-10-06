@@ -1,29 +1,28 @@
 package status;
 
-public class NovaSolicitacao implements Status {
+public class NovaSolicitacao extends Status {
 
 	@Override
 	public void solicitar() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Solicitação efetuada com sucesso.");	
+		this.solicitacao.setStatus(new AguardandadoChefia());
 	}
 
 	@Override
 	public void aprovar() {
-		// TODO Auto-generated method stub
+		throw new IllegalStateException("Não é possivel aprovar, solicitação aguardando chefia");
 		
 	}
 
 	@Override
 	public void recusar() {
-		// TODO Auto-generated method stub
+		throw new IllegalStateException("Não é possivel recusar, solicitação aguardando chefia");
 		
 	}
 
 	@Override
 	public void retornar(String observacao) {
-		// TODO Auto-generated method stub
-		
+		throw new IllegalStateException("Não é possivel retornar, solicitação aguardando chefia");		
 	}
 	
 }

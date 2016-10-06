@@ -71,22 +71,18 @@ public class Solicitacao {
 	}
 
 	public void solicitar() {
-		//this.status.solicitar();
-		throw new UnsupportedOperationException("Método não implementado");
+		this.status.setSolicitacao(this).solicitar();
 	}
 	
 	public void aprovar() {
-		//this.status.aprovar();
-		throw new UnsupportedOperationException("Método não implementado");
+		this.status.setSolicitacao(this).aprovar();
 	}
 	
 	public void recusar() {
-		//this.status.recusar();
-		throw new UnsupportedOperationException("Método não implementado");
+		this.status.setSolicitacao(this).recusar();
 	}
 	
 	public void retornar(String observacao) {
-		//this.status.recusar();
-		throw new UnsupportedOperationException("Método não implementado");
+		this.status.setSolicitacao(this).retornar(observacao);
 	}
 }
