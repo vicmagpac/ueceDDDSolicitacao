@@ -11,6 +11,10 @@ public abstract class Status {
 		return this.solicitacao.getStatus();
 	}
 	
+	public Solicitacao getSolicitacao() {
+		return this.solicitacao;
+	}
+	
 	public abstract void solicitar();
 	public abstract void aprovar();
 	public abstract void recusar();
