@@ -1,57 +1,55 @@
 package test;
 
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import modelo.Funcionario;
 import modelo.Solicitacao;
 import status.AguardandadoChefia;
 import status.AguardandoRH;
+import status.Aprovada;
 import status.Recusada;
 
 import static org.junit.Assert.*;
 
-public class AguardandoChefiaTest {
+public class AguardandoRHTest {
 
     @Test(expected = IllegalStateException.class)
     public void testSolicitar() throws Exception {
-        AguardandadoChefia instance = montaCenario();
+        AguardandoRH instance = montaCenario();
         instance.solicitar();
     }
-    
+
     @Test
     public void testAprovar() throws Exception {
-        AguardandadoChefia instance = montaCenario();
+        AguardandoRH instance = montaCenario();
         instance.aprovar();
-        assertEquals(new AguardandoRH(), instance.getSolicitacao().getStatus());
+        assertEquals(new Aprovada(), instance.getSolicitacao().getStatus());
     }
-    
+
     @Test
     public void testRecusar() throws Exception {
-        AguardandadoChefia instance = montaCenario();
+        AguardandoRH instance = montaCenario();
         instance.recusar();
         assertEquals(new Recusada(), instance.getSolicitacao().getStatus());
     }
-
-    @Test(expected = IllegalStateException.class)
+    
+    @Test
     public void testRetornar() throws Exception {
-        AguardandadoChefia instance = montaCenario();
+        AguardandoRH instance = montaCenario();
         instance.retornar("Mensagem de observação");
+        assertEquals(new AguardandadoChefia(), instance.getSolicitacao().getStatus());
     }
 
-    private AguardandadoChefia montaCenario(){
+    private AguardandoRH montaCenario() {
         //Cenário
         Funcionario funcionario = new Funcionario();
         funcionario.setNome("JOAO");
         Solicitacao solicitacao = new Solicitacao();
         solicitacao.setFuncionario(funcionario);
 
-        AguardandadoChefia instance = new AguardandadoChefia();
+        AguardandoRH instance = new AguardandoRH();
         instance.setSolicitacao(solicitacao);
         return instance;
     }
+
 }

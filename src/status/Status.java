@@ -19,4 +19,31 @@ public abstract class Status {
 	public abstract void aprovar();
 	public abstract void recusar();
 	public abstract void retornar(String observacao);
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((solicitacao == null) ? 0 : solicitacao.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Status other = (Status) obj;
+		if (solicitacao == null) {
+			if (other.solicitacao != null)
+				return false;
+		} else if (!solicitacao.equals(other.solicitacao))
+			return false;
+		return true;
+	}
+	
+	
 }

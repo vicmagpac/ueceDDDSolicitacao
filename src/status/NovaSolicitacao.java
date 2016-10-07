@@ -25,4 +25,6 @@ public class NovaSolicitacao extends Status {
 		throw new IllegalStateException("Não é possivel retornar, solicitação aguardando chefia");		
 	}
 	
+	
+	
 }
