@@ -1,4 +1,4 @@
-package test;
+package Test;
 
 
 import org.junit.After;
@@ -7,11 +7,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import modelo.Funcionario;
-import modelo.Solicitacao;
-import status.AguardandadoChefia;
-import status.AguardandoRH;
-import status.Recusada;
+import Modelo.Funcionario;
+import Modelo.Solicitacao;
+import Modelo.Status.AguardandadoChefia;
+import Modelo.Status.AguardandoRH;
+import Modelo.Status.Recusada;
 
 import static org.junit.Assert.*;
 

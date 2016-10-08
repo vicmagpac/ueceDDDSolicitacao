@@ -1,8 +1,8 @@
-package modelo;
+package Modelo;
 import java.util.Date;
 
-import status.NovaSolicitacao;
-import status.Status;
+import Modelo.Status.NovaSolicitacao;
+import Modelo.Status.Status;
 
 public class Solicitacao {
 	

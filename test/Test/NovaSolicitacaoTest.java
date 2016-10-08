@@ -1,12 +1,12 @@
-package test;
+package Test;
 
-import modelo.Funcionario;
-import modelo.Solicitacao;
+import Modelo.Funcionario;
+import Modelo.Solicitacao;
 
 import org.junit.Test;
 
-import status.AguardandadoChefia;
-import status.NovaSolicitacao;
+import Modelo.Status.AguardandadoChefia;
+import Modelo.Status.NovaSolicitacao;
 import static org.junit.Assert.*;
 
 

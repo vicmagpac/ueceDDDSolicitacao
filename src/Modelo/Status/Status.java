@@ -1,6 +1,6 @@
-package status;
+package Modelo.Status;
 
-import modelo.Solicitacao;
+import Modelo.Solicitacao;
 
 public abstract class Status {
 	

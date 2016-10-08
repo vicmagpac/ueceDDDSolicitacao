@@ -1,4 +1,4 @@
-package status;
+package Modelo.Status;
 
 public class Aprovada extends Status {
 

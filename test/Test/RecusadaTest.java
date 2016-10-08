@@ -1,39 +1,33 @@
-package test;
+package Test;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import status.Aprovada;
+import Modelo.Status.Recusada;
 
-import static org.junit.Assert.*;
-
-public class AprovadaTest {
+public class RecusadaTest {
 
     @Test(expected = IllegalStateException.class)
     public void testSolicitar() throws Exception {
-        Aprovada instance = new Aprovada();
+        Recusada instance = new Recusada();
         instance.solicitar();
     }
 
     @Test(expected = IllegalStateException.class)
     public void testAprovar() throws Exception {
-        Aprovada instance = new Aprovada();
+        Recusada instance = new Recusada();
         instance.aprovar();
     }
 
     @Test(expected = IllegalStateException.class)
     public void testRecusar() throws Exception {
-        Aprovada instance = new Aprovada();
+        Recusada instance = new Recusada();
         instance.recusar();
     }
 
     @Test(expected = IllegalStateException.class)
-    public void testRetornar() throws Exception {
-        Aprovada instance = new Aprovada();
-        instance.retornar("Mensagem de retorno");
+    public void testRetornar() throws Exception  {
+        Recusada instance = new Recusada();
+        instance.retornar("Mensagem observação");
     }
 
 }
