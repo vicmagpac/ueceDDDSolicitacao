@@ -7,57 +7,52 @@ import org.junit.Test;
 
 import Modelo.Status.AguardandadoChefia;
 import Modelo.Status.NovaSolicitacao;
+import Modelo.Status.Status;
 import static org.junit.Assert.*;
 
 
 public class NovaSolicitacaoTest {
+    
+    private Solicitacao solicitacao;
 
     @Test
     public void testSolicitar() {
         //Cenário
-        NovaSolicitacao instance = montaCenario();
-
-        //Ação
-        instance.solicitar();
+        this.montaCenario();
+        this.solicitacao.solicitar();
 
         //Validação
-        assertEquals(new AguardandadoChefia(), instance.getSolicitacao().getStatus());
+        assertEquals(Status.AguardandadoChefia, this.solicitacao.getStatus());
     }
 
     @Test(expected = IllegalStateException.class)
     public void testAprovar() throws Exception {
         //Cenário
-        NovaSolicitacao instance = montaCenario();
-
-        instance.aprovar();
+        this.montaCenario();
+        this.solicitacao.aprovar();
     }
 
     @Test(expected = IllegalStateException.class)
     public void testRecusar() throws Exception {
         //Cenário
-        NovaSolicitacao instance = montaCenario();
+        this.montaCenario();
 
-        instance.recusar();
+        this.solicitacao.recusar();
     }
 
     @Test(expected = IllegalStateException.class)
     public void testRetornar() throws Exception {
         //Cenário
-        NovaSolicitacao instance = montaCenario();
+        this.montaCenario();
 
-        instance.retornar("Mensagem observação");
+        this.solicitacao.retornar("Mensagem observação");
     }
-
-    private NovaSolicitacao montaCenario(){
+    private void montaCenario(){
         //Cenário
         Funcionario funcionario = new Funcionario();
         funcionario.setNome("JOAO");
         
-        Solicitacao solicitacao = new Solicitacao();
-        solicitacao.setFuncionario(funcionario);
-
-        NovaSolicitacao instance = new NovaSolicitacao();
-        instance.setSolicitacao(solicitacao);
-        return instance;
+        this.solicitacao = new Solicitacao();
+        this.solicitacao.setFuncionario(funcionario);
     }
 }

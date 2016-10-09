@@ -1,27 +1,29 @@
 package Modelo.Status;
 
-public class Recusada extends Status {
+import Modelo.Solicitacao;
+
+public class Recusada implements IStatus {
 
     @Override
-    public void solicitar() {
+    public void solicitar(Solicitacao solicitacao) {
         throw new IllegalStateException("Não é possível solicitar, solicitação já recusada!");
 
     }
 
     @Override
-    public void aprovar() {
+    public void aprovar(Solicitacao solicitacao) {
         throw new IllegalStateException("Não é possível aprovar, solicitação já recusada!");
 
     }
 
     @Override
-    public void recusar() {
+    public void recusar(Solicitacao solicitacao) {
         throw new IllegalStateException("Não é possível recusada, solicitação já recusada!");
 
     }
 
     @Override
-    public void retornar(String observacao) {
+    public void retornar(Solicitacao solicitacao, String observacao) {
         throw new IllegalStateException("Não é possível retornar, solicitação já recusada!");
 
     }

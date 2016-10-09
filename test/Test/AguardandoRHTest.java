@@ -8,48 +8,52 @@ import Modelo.Status.AguardandadoChefia;
 import Modelo.Status.AguardandoRH;
 import Modelo.Status.Aprovada;
 import Modelo.Status.Recusada;
+import Modelo.Status.Status;
 
 import static org.junit.Assert.*;
 
 public class AguardandoRHTest {
 
+    private Solicitacao solicitacao;
+    
     @Test(expected = IllegalStateException.class)
     public void testSolicitar() throws Exception {
-        AguardandoRH instance = montaCenario();
-        instance.solicitar();
+        this.montaCenario();
+        this.solicitacao.solicitar();
     }
 
+    
     @Test
     public void testAprovar() throws Exception {
-        AguardandoRH instance = montaCenario();
-        instance.aprovar();
-        assertEquals(new Aprovada(), instance.getSolicitacao().getStatus());
+        this.montaCenario();
+        this.solicitacao.aprovar();
+        assertEquals(Status.Aprovada, this.solicitacao.getStatus());
     }
 
+    
     @Test
     public void testRecusar() throws Exception {
-        AguardandoRH instance = montaCenario();
-        instance.recusar();
-        assertEquals(new Recusada(), instance.getSolicitacao().getStatus());
+        this.montaCenario();
+        this.solicitacao.recusar();
+        assertEquals(Status.Recusada, this.solicitacao.getStatus());
     }
     
     @Test
     public void testRetornar() throws Exception {
-        AguardandoRH instance = montaCenario();
-        instance.retornar("Mensagem de observação");
-        assertEquals(new AguardandadoChefia(), instance.getSolicitacao().getStatus());
+        this.montaCenario();
+        this.solicitacao.retornar("Mensagem de observação");
+        assertEquals(Status.AguardandadoChefia, this.solicitacao.getStatus());
     }
-
-    private AguardandoRH montaCenario() {
+    
+    private void montaCenario(){
         //Cenário
         Funcionario funcionario = new Funcionario();
         funcionario.setNome("JOAO");
-        Solicitacao solicitacao = new Solicitacao();
-        solicitacao.setFuncionario(funcionario);
-
-        AguardandoRH instance = new AguardandoRH();
-        instance.setSolicitacao(solicitacao);
-        return instance;
+        
+        this.solicitacao = new Solicitacao();
+        this.solicitacao.setFuncionario(funcionario);
+        
+        this.solicitacao.setStatus(Status.AguardandoRH);
     }
 
 }

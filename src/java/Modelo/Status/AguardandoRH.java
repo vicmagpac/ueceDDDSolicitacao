@@ -1,30 +1,41 @@
 package Modelo.Status;
 
-public class AguardandoRH extends Status {
+import Modelo.Solicitacao;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(of = {"solicitacao"})
+public class AguardandoRH implements IStatus {
+
+    private Solicitacao solicitacao;
+    
     @Override
-    public void solicitar() {
+    public void solicitar(Solicitacao solicitacao) {
         throw new IllegalStateException("Não é possível solicitar, solicitação já iniciada!");
     }
 
     @Override
-    public void aprovar() {
+    public void aprovar(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
+        this.solicitacao.setStatus(Status.Aprovada);
+        
         System.out.println("Solicitação aprovada com sucesso.");
-        this.solicitacao.setStatus(new Aprovada());
     }
 
     @Override
-    public void recusar() {
+    public void recusar(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
+        this.solicitacao.setStatus(Status.Recusada);
+        
         System.out.println("Solicitação recusada!");
-        this.solicitacao.setStatus(new Recusada());
     }
 
     @Override
-    public void retornar(String observacao) {
-        System.out.println("Solicitação retornada para CHEFIA!");
-
+    public void retornar(Solicitacao solicitacao, String observacao) {
+        this.solicitacao = solicitacao;
+        
         this.solicitacao.setObservacao(observacao);
-        this.solicitacao.setStatus(new AguardandadoChefia());
+        this.solicitacao.setStatus(Status.AguardandadoChefia);
+        
+        System.out.println("Solicitação retornada para CHEFIA!");
     }
-
 }

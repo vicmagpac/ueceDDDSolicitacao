@@ -1,56 +1,40 @@
 package Modelo.Status;
 
 import Modelo.Solicitacao;
+import Modelo.Status.IStatus;
 
-public abstract class Status {
+public enum Status implements IStatus {
 
-    protected Solicitacao solicitacao;
+    NovaSolicitacao(new NovaSolicitacao()),
+    AguardandadoChefia(new AguardandadoChefia()),
+    AguardandoRH(new AguardandoRH()),
+    Aprovada(new Aprovada()),
+    Recusada(new Recusada());
+    
+    private IStatus status;
 
-    public Status setSolicitacao(Solicitacao solicitacao) {
-        this.solicitacao = solicitacao;
-        return this.solicitacao.getStatus();
-    }
-
-    public Solicitacao getSolicitacao() {
-        return this.solicitacao;
-    }
-
-    public abstract void solicitar();
-
-    public abstract void aprovar();
-
-    public abstract void recusar();
-
-    public abstract void retornar(String observacao);
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((solicitacao == null) ? 0 : solicitacao.hashCode());
-        return result;
+    Status(IStatus status) {
+        this.status = status;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Status other = (Status) obj;
-        if (solicitacao == null) {
-            if (other.solicitacao != null) {
-                return false;
-            }
-        } else if (!solicitacao.equals(other.solicitacao)) {
-            return false;
-        }
-        return true;
+    public void solicitar(Solicitacao solicitacao) {
+        this.status.solicitar(solicitacao);
     }
 
+    @Override
+    public void aprovar(Solicitacao solicitacao) {
+        this.status.aprovar(solicitacao);
+    }
+
+    @Override
+    public void recusar(Solicitacao solicitacao) {
+        this.status.recusar(solicitacao);
+    }
+
+    @Override
+    public void retornar(Solicitacao solicitacao, String observacao) {
+        this.status.retornar(solicitacao, observacao);
+    }
+        
 }
